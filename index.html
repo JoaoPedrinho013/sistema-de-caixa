@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Sistema de Caixa</title>
+</head>
+
+<body>
+
+    <div id="box_principal">
+
+        <section id="box_cardapio">
+            <h2>Cardápio</h2>
+            <header>
+                <ul class="lista_botoes">
+                    <li><button onclick="gerar('todos')">Todos</button></li>
+                    <li><button onclick="gerar('salgados')">Salgados</button></li>
+                    <li><button onclick="gerar('doces')">Doces</button></li>
+                    <li><button onclick="gerar('bebidas')">Bebidas</button></li>
+                </ul>
+            </header>
+            <div id="conteudo_cardapio"></div>
+        </section>
+        
+        <section id="box_comanda">
+            <h2>Comanda</h2>
+            <div id="conteudo_comanda"></div>
+        </section>
+
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>

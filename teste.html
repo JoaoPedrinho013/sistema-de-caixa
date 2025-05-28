@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Dinâmico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      background-color: #fff;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Cardápio</h1>
+  <div id="menu-container"></div>
+
+  <script>
+    const menu = {
+      doces: {
+        brigadeiro: { preco: 2.5, descricao: "Doce de chocolate tradicional" },
+        pudim: { preco: 3.0, descricao: "Pudim de leite condensado" },
+        bolo: { preco: 4.0, descricao: "Fatia de bolo de cenoura" }
+      },
+      salgados: {
+        coxinha: { preco: 5.0, descricao: "Coxinha de frango" },
+        pastel: { preco: 4.5, descricao: "Pastel de queijo" },
+        empada: { preco: 4.0, descricao: "Empada de frango" }
+      },
+      bebidas: {
+        coca: { preco: 6.0, descricao: "Refrigerante Coca-Cola lata" },
+        agua: { preco: 2.0, descricao: "Água mineral" },
+        soda: { preco: 5.0, descricao: "Soda limonada" }
+      }
+    };
+
+    const container = document.getElementById("menu-container");
+
+    for (const categoria in menu) {
+      const titulo = document.createElement("h2");
+      titulo.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+      container.appendChild(titulo);
+
+      const lista = document.createElement("ul");
+
+      for (const item in menu[categoria]) {
+        const li = document.createElement("li");
+        const info = menu[categoria][item];
+        li.textContent = `${item} - R$${info.preco.toFixed(2)} (${info.descricao})`;
+        lista.appendChild(li);
+      }
+
+      container.appendChild(lista);
+    }
+  </script>
+</body>
+</html>
