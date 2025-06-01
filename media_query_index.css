@@ -1,0 +1,34 @@
+@media (max-width: 900px) {
+  h1, h2 {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  #box_principal {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+
+  #cardapio_caixa, #comanda_caixa {
+    width: 90%;
+    height: auto;
+  }
+
+  #conteudo_cardapio {
+    max-height: 300px;
+  }
+
+  .cardapio_item_caixa {
+    width: 30%;
+  }
+
+  .lista_botoes {
+    flex-wrap: wrap;
+  }
+
+  .lista_botoes > li {
+    margin: 0.5em;
+    font-size: 0.9rem;
+  }
+}

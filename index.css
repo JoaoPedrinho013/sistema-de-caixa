@@ -11,8 +11,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
     color: rgb(30, 30, 30);
 }
 
@@ -29,6 +29,7 @@ h2 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    overflow: hidden;
 
 }
 
@@ -61,17 +62,26 @@ h2 {
 #conteudo_cardapio {
     display: flex;
     flex-wrap: wrap;
-    height: 70%;
+    gap: 10px;
+    justify-content: center;
     overflow-y: auto;
     overflow-x: hidden;
-    justify-content: space-evenly;
+    height: 70%;
 }
 
 .cardapio_item_caixa {
-    width: 30%;
+    width: 28%;
+    min-width: 180px;
     background-color: white;
     margin: 10px 0;
     border-radius: 5px;
+}
+
+.cardapio_item_caixa img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .botao_cardapio_add {
@@ -90,6 +100,26 @@ h2 {
     color: white;
 }
 
+#comanda_caixa {
+    display: flex;
+    flex-direction: column;
+}
+
+#conteudo_comanda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.lista_itens {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+}
 
 .comanda_item_caixa {
     display: grid;
@@ -130,34 +160,32 @@ h2 {
     border-radius: 5px;
 }
 
-.comanda_item_caixa button:hover{
+.comanda_item_caixa button:hover {
     cursor: pointer;
     color: white;
     background-color: #ff6600;
 }
 
-.lista_itens {
-    
-}
-
 .comanda_rodape_caixa {
-    border-top: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    padding: 3%;
-    margin: 10px;
+    flex-shrink: 0;
+    padding: 10px;
+    margin-top: 10px;
     background-color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.comanda_rodape_caixa > p{
-    color: rgb(120, 240, 120) ;
+
+.comanda_rodape_caixa>p {
+    color: rgb(120, 240, 120);
     font-weight: 600;
 }
-.comanda_rodape_caixa > div{
+
+.comanda_rodape_caixa>div {
     justify-content: space-around;
 }
 
-.comanda_rodape_caixa > div > .botao_cancelar{
-     border: 1px solid rgba(0, 0, 0, 0.3);
+.comanda_rodape_caixa>div>.botao_cancelar {
+    border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: white;
     color: red;
     font-weight: 600;
@@ -167,13 +195,14 @@ h2 {
 
 }
 
-.comanda_rodape_caixa > div > .botao_cancelar:hover{
+.comanda_rodape_caixa>div>.botao_cancelar:hover {
     cursor: pointer;
     color: white;
     background-color: red;
 }
-.comanda_rodape_caixa > div > .botao_finalizar{
-     border: 1px solid rgba(0, 0, 0, 0.3);
+
+.comanda_rodape_caixa>div>.botao_finalizar {
+    border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: white;
     color: lightgreen;
     font-weight: 600;
@@ -183,7 +212,7 @@ h2 {
 
 }
 
-.comanda_rodape_caixa > div > .botao_finalizar:hover{
+.comanda_rodape_caixa>div>.botao_finalizar:hover {
     cursor: pointer;
     color: white;
     background-color: lightgreen;
@@ -199,4 +228,3 @@ h2 {
 .borda {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }
-

@@ -152,7 +152,7 @@ const criarItemComanda = (item) => {
 const atualizarComanda = () => {
   const conteudo = document.getElementById("conteudo_comanda")
   conteudo.innerHTML = ""
-  conteudo.classList.add("comanda_caixa")
+ 
 
   const lista_itens = document.createElement("div")
   lista_itens.style.height = "250px"
