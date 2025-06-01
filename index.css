@@ -3,9 +3,11 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -13,28 +15,30 @@ body{
     color: rgb(30, 30, 30);
 }
 
-h2{
+h1,h2{
     padding: 20px;
-    text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+h2{
+    color: #ff6600;
 }
 
 #box_principal{
-    width: 80vw;
-    height: 80vh;
+    width: 90vw;
+    height: 90vh;
+    margin: 1%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.3);
     
-}
-#box_principal:hover{
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 #cardapio_caixa{
     width: 45%;
     height: 85%;
-    
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(178, 251, 165);
 }
 
 .lista_botoes {
@@ -45,34 +49,54 @@ h2{
 
 .lista_botoes > li{
     margin: 1em;
-    background-color: transparent;
 }
-
-.lista_botoes > li > button{
-    background-color: transparent;
-    border: none;
-    font-size: 1.3em;
-    color: rgb(30, 30, 30);
-}
-.lista_botoes > li > button:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 
 .lista_botoes li.ativo {
-    font-weight: bold;
+    font-weight: 500;
     color: #ff6600;
 }
+
 .lista_botoes li:hover {
     cursor: pointer;
 }
 
+#conteudo_cardapio{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardapio_item_caixa{
+    width: 33%;
+}
+
+.botao_cardapio_add{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ff6600;
+    background-color: white;
+    padding: 3%;
+    border: none;
+    border-radius: 5px;
+}
+
+.botao_cardapio_add:hover{
+    cursor: pointer;
+    background-color: #ff6600;
+    color: white;
+}
+
+.conteudo_cardapio{
+    
+}
+
+
+
 #comanda_caixa{
     width: 45%;
     height: 85%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(178, 251, 165);
 }
 
 .borda{
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
 }

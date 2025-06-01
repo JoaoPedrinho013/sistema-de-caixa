@@ -15,6 +15,14 @@ const produtos = {
     agua: { img: "imagens/agua.png", cod: 3.3, nome: "Água Mineral 310ml", preco: 2.39 }
   }
 }
+const box_principal = document.getElementById("box_principal")
+
+box_principal.addEventListener("mouseenter", () => {
+  box_principal.classList.add("sombra")
+})
+box_principal.addEventListener("mouseleave", () => {
+  box_principal.classList.remove("sombra")
+})
 // cardapio
 
 const cardapio_caixa = document.getElementById("cardapio_caixa")
@@ -97,7 +105,6 @@ botoes.forEach(botao => {
 
 
 // Comandas
-
 const comanda_caixa = document.getElementById("comanda_caixa")
 
 comanda_caixa.addEventListener("mouseenter", () => {
