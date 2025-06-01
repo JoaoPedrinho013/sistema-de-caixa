@@ -1,17 +1,17 @@
 const produtos = {
   salgados: {
-    coxinha: { img: "imagens/coxinha.avif", cod: 1.1, nome: "Coxinha de Frango", preco: 6 },
-    bolinho_carne: { img: "imagens/bolinho_carne.jpg", cod: 1.2, nome: "Bolinho de Carne", preco: 6 },
-    maravilha: { img: "imagens/maravilha.jpg", cod: 1.3, nome: "Maravilha", preco: 6 }
+    coxinha: { img: "imagens/coxinha.png", cod: 1.1, nome: "Coxinha de Frango", preco: 6 },
+    bolinho_carne: { img: "imagens/bolinho_carne.png", cod: 1.2, nome: "Bolinho de Carne", preco: 6 },
+    maravilha: { img: "imagens/maravilha.png", cod: 1.3, nome: "Maravilha", preco: 6 }
   },
   doces: {
-    mousse: { img: "imagens/mousse.jpg", cod: 2.1, nome: "Mousse de Maracujá", preco: 3.5 },
-    brigadeiro: { img: "imagens/brigadeiro.avif", cod: 2.2, nome: "Brigadeirão", preco: 4 },
-    pudim: { img: "imagens/pudim.avif", cod: 2.3, nome: "Pudim de Leite", preco: 4.5 }
+    mousse: { img: "imagens/mousse.png", cod: 2.1, nome: "Mousse de Maracujá", preco: 3.5 },
+    brigadeiro: { img: "imagens/brigadeiro.png", cod: 2.2, nome: "Brigadeirão", preco: 4 },
+    pudim: { img: "imagens/pudim.png", cod: 2.3, nome: "Pudim de Leite", preco: 4.5 }
   },
   bebidas: {
     coca: { img: "imagens/cocacola.png", cod: 3.1, nome: "Coca-Cola 600ml", preco: 6.5 },
-    soda: { img: "imagens/soda.jpeg", cod: 3.2, nome: "Soda 600ml", preco: 6 },
+    soda: { img: "imagens/soda.png", cod: 3.2, nome: "Soda 600ml", preco: 6 },
     agua: { img: "imagens/agua.png", cod: 3.3, nome: "Água Mineral 310ml", preco: 2.39 }
   }
 }
@@ -155,8 +155,9 @@ const atualizarComanda = () => {
   conteudo.classList.add("comanda_caixa")
 
   const lista_itens = document.createElement("div")
-  lista_itens.style.flex = "1"
+  lista_itens.style.height = "250px"
   lista_itens.style.overflowY = "auto"
+  lista_itens.style.overflowX = "hidden"
   lista_itens.classList.add("lista_itens")
 
   let total = 0
@@ -181,11 +182,14 @@ const atualizarComanda = () => {
   comanda_botoes.style.marginTop = "10px"
 
   const comanda_botao_cancelar = document.createElement("button")
+  comanda_botao_cancelar.classList.add("botao_cancelar")
   comanda_botao_cancelar.textContent = "Cancelar"
   comanda_botao_cancelar.onclick = cancelarComanda
   comanda_botoes.appendChild(comanda_botao_cancelar)
 
+
   const comanda_botao_finalizar = document.createElement("button")
+  comanda_botao_finalizar.classList.add("botao_finalizar")
   comanda_botao_finalizar.textContent = "Finalizar"
   comanda_botao_finalizar.onclick = finalizarComanda
   comanda_botoes.appendChild(comanda_botao_finalizar)
