@@ -37,9 +37,6 @@ h2{
     
 }
 
-#cardapio_caixa:hover{
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-}
 .lista_botoes {
     display: flex;
     justify-content: center;
@@ -71,10 +68,11 @@ h2{
     cursor: pointer;
 }
 
-#box_comanda{
+#comanda_caixa{
     width: 45%;
     height: 85%;
 }
-#box_comanda:hover{
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+.borda{
+    border: 1px solid rgba(0, 0, 0, 0.5);
 }

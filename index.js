@@ -16,6 +16,16 @@ const produtos = {
   }
 }
 // cardapio
+
+const cardapio_caixa = document.getElementById("cardapio_caixa")
+
+cardapio_caixa.addEventListener("mouseenter", () => {
+  cardapio_caixa.classList.add("borda")
+})
+cardapio_caixa.addEventListener("mouseleave", () => {
+  cardapio_caixa.classList.remove("borda")
+})
+
 const criarItemCardapio = (item) => {
   const div = document.createElement("div")
   div.classList.add("cardapio_item_caixa")
@@ -72,27 +82,37 @@ const gerar = (categoria) => {
 
 const botoes = document.querySelectorAll('.lista_botoes li');
 const opcao_clique = (event) => {
-    const categoria = event.target.dataset.categoria;
+  const categoria = event.target.dataset.categoria;
 
-    botoes.forEach(botao => botao.classList.remove('ativo'));
+  botoes.forEach(botao => botao.classList.remove('ativo'));
 
-    event.target.classList.add('ativo');
+  event.target.classList.add('ativo');
 
-    gerar(categoria);
+  gerar(categoria);
 }
 
 botoes.forEach(botao => {
-    botao.addEventListener('click', opcao_clique);
+  botao.addEventListener('click', opcao_clique);
 });
 
 
 // Comandas
+
+const comanda_caixa = document.getElementById("comanda_caixa")
+
+comanda_caixa.addEventListener("mouseenter", () => {
+  comanda_caixa.classList.add("borda")
+})
+comanda_caixa.addEventListener("mouseleave", () => {
+  comanda_caixa.classList.remove("borda")
+})
+
 let comanda = []
 
 const criarItemComanda = (item) => {
-  const   comanda_item_caixa = document.createElement("div")
+  const comanda_item_caixa = document.createElement("div")
   comanda_item_caixa.classList.add("comanda_item_caixa")
-  
+
   const comanda_titulo_cd = document.createElement("p")
   comanda_titulo_cd.textContent = `CODIGO`
   comanda_item_caixa.appendChild(comanda_titulo_cd)
@@ -102,7 +122,7 @@ const criarItemComanda = (item) => {
   const comanda_titulo_vl = document.createElement("p")
   comanda_titulo_vl.textContent = `VALOR`
   comanda_item_caixa.appendChild(comanda_titulo_vl)
-  
+
   const comanda_itens_cd = document.createElement("p")
   comanda_itens_cd.textContent = `${item.cod}`
   comanda_item_caixa.appendChild(comanda_itens_cd)
@@ -201,3 +221,4 @@ const finalizarComanda = () => {
   comanda = []
   atualizarComanda()
 }
+
