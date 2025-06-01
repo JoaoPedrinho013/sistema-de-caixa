@@ -31,13 +31,13 @@ h2{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
-#box_cardapio{
+#cardapio_caixa{
     width: 45%;
     height: 85%;
     
 }
 
-#box_cardapio:hover{
+#cardapio_caixa:hover{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 .lista_botoes {
@@ -63,12 +63,13 @@ h2{
 }
 
 
-
-
-
-
-
-
+.lista_botoes li.ativo {
+    font-weight: bold;
+    color: #ff6600;
+}
+.lista_botoes li:hover {
+    cursor: pointer;
+}
 
 #box_comanda{
     width: 45%;

@@ -15,18 +15,10 @@ const produtos = {
     agua: { img: "imagens/agua.png", cod: 3.3, nome: "Água Mineral 310ml", preco: 2.39 }
   }
 }
-
+// cardapio
 const criarItemCardapio = (item) => {
   const div = document.createElement("div")
-  div.style.border = "1px solid green"
-  div.style.padding = "5px"
-  div.style.margin = "15px"
-  div.style.width = "25%"
-  div.style.borderRadius = "10px"
-  div.style.display = "flex"
-  div.style.flexDirection = "column"
-  div.style.justifyContent = "space-around"
-  div.style.alignItems = "center"
+  div.classList.add("cardapio_item_caixa")
 
   const imagem = document.createElement("img")
   imagem.src = item.img
@@ -43,10 +35,7 @@ const criarItemCardapio = (item) => {
 
   const botao = document.createElement("button")
   botao.textContent = "Adc a Comanda"
-  botao.style.backgroundColor = "lightgreen"
-  botao.style.border = "1px solid rgba(0, 0, 0, 0.5)"
-  botao.style.color = "black"
-  botao.style.padding = "5px"
+  botao.classList.add("botao_cardapio_add")
   botao.onclick = () => { adcComanda(item.cod) }
   div.appendChild(botao)
 
@@ -54,113 +43,128 @@ const criarItemCardapio = (item) => {
 }
 
 const gerar = (categoria) => {
-  const cardapio = document.getElementById('conteudo_cardapio')
-  cardapio.style.display = "flex"
-  cardapio.style.flexWrap = "wrap"
-  cardapio.style.height = "70%"
-  cardapio.style.overflowY = "auto"
-  cardapio.style.overflowX = "hidden"
-  cardapio.innerHTML = ''
+  const cardapio = document.getElementById('conteudo_cardapio');
+  cardapio.classList.add("conteudo_cardapio");
+  cardapio.innerHTML = '';
 
-  let categorias = []
+  let categorias = [];
 
   if (categoria === 'todos') {
     for (const grupo of Object.values(produtos)) {
       for (const item of Object.values(grupo)) {
-        categorias.push(item)
+        categorias.push(item);
       }
     }
   } else {
-    const grupo = produtos[categoria]
+    const grupo = produtos[categoria];
     if (grupo) {
       for (const item of Object.values(grupo)) {
-        categorias.push(item)
+        categorias.push(item);
       }
     }
   }
 
   for (const item of categorias) {
-    const div = criarItemCardapio(item)
-    cardapio.appendChild(div)
+    const div = criarItemCardapio(item);
+    cardapio.appendChild(div);
   }
+};
+
+const botoes = document.querySelectorAll('.lista_botoes li');
+const opcao_clique = (event) => {
+    const categoria = event.target.dataset.categoria;
+
+    botoes.forEach(botao => botao.classList.remove('ativo'));
+
+    event.target.classList.add('ativo');
+
+    gerar(categoria);
 }
 
+botoes.forEach(botao => {
+    botao.addEventListener('click', opcao_clique);
+});
+
+
+// Comandas
 let comanda = []
 
 const criarItemComanda = (item) => {
-  const div = document.createElement("div")
-  div.style.display = "flex"
-  div.style.justifyContent = "space-around"
-  div.style.alignItems = "center"
-  div.style.padding = "10px"
-  div.style.marginBottom = "10px"
-  div.style.border = "1px solid green"
-  div.style.borderRadius = "8px"
+  const   comanda_item_caixa = document.createElement("div")
+  comanda_item_caixa.classList.add("comanda_item_caixa")
+  
+  const comanda_titulo_cd = document.createElement("p")
+  comanda_titulo_cd.textContent = `CODIGO`
+  comanda_item_caixa.appendChild(comanda_titulo_cd)
+  const comanda_titulo_nm = document.createElement("p")
+  comanda_titulo_nm.textContent = `PRODUTO`
+  comanda_item_caixa.appendChild(comanda_titulo_nm)
+  const comanda_titulo_vl = document.createElement("p")
+  comanda_titulo_vl.textContent = `VALOR`
+  comanda_item_caixa.appendChild(comanda_titulo_vl)
+  
+  const comanda_itens_cd = document.createElement("p")
+  comanda_itens_cd.textContent = `${item.cod}`
+  comanda_item_caixa.appendChild(comanda_itens_cd)
+  const comanda_itens_nm = document.createElement("p")
+  comanda_itens_nm.textContent = `${item.nome}`
+  comanda_item_caixa.appendChild(comanda_itens_nm)
+  const comanda_itens_vl = document.createElement("p")
+  comanda_itens_vl.textContent = `R$${item.preco.toFixed(2)}`
+  comanda_item_caixa.appendChild(comanda_itens_vl)
 
-  const produtoInfo = document.createElement("p")
-  produtoInfo.textContent = `Cod: ${item.cod} | ${item.nome} | R$${item.preco.toFixed(2)}`
-  div.appendChild(produtoInfo)
+  const comanda_botao = document.createElement("button")
+  comanda_botao.textContent = "Remover"
+  comanda_botao.style.padding = "5px"
+  comanda_botao.onclick = () => removerItem(item.cod)
+  comanda_item_caixa.appendChild(comanda_botao)
 
-  const botaoRemover = document.createElement("button")
-  botaoRemover.textContent = "Remover"
-  botaoRemover.style.padding = "5px"
-  botaoRemover.onclick = () => removerItem(item.cod)
-  div.appendChild(botaoRemover)
-
-  return div
+  return comanda_item_caixa
 }
 
 const atualizarComanda = () => {
   const conteudo = document.getElementById("conteudo_comanda")
   conteudo.innerHTML = ""
+  conteudo.classList.add("comanda_caixa")
 
-  conteudo.style.display = "flex"
-  conteudo.style.flexDirection = "column"
-  conteudo.style.justifyContent = "space-between"
-  conteudo.style.height = "80%"
-
-  const listaItens = document.createElement("div")
-  listaItens.style.flex = "1"
-  listaItens.style.overflowY = "auto"
+  const lista_itens = document.createElement("div")
+  lista_itens.style.flex = "1"
+  lista_itens.style.overflowY = "auto"
+  lista_itens.classList.add("lista_itens")
 
   let total = 0
   comanda.forEach(item => {
-    const itemDiv = criarItemComanda(item)
-    listaItens.appendChild(itemDiv)
+    const comanda_item_caixa = criarItemComanda(item)
+    lista_itens.appendChild(comanda_item_caixa)
     total += item.preco
   })
 
-  conteudo.appendChild(listaItens)
+  conteudo.appendChild(lista_itens)
 
-  const rodape = document.createElement("div")
-  rodape.style.marginTop = "15px"
-  rodape.style.borderTop = "1px solid gray"
-  rodape.style.paddingTop = "10px"
-  rodape.style.display = "flex"
-  rodape.style.flexDirection = "column"
-  rodape.style.alignItems = "center"
+  const comanda_rodape_caixa = document.createElement("div")
+  comanda_rodape_caixa.classList.add("comanda_rodape_caixa")
 
-  const totalEl = document.createElement("p")
-  totalEl.textContent = `Total: R$${total.toFixed(2)}`
-  rodape.appendChild(totalEl)
+  const comanda_total = document.createElement("p")
+  comanda_total.textContent = `Total: R$${total.toFixed(2)}`
+  comanda_rodape_caixa.appendChild(comanda_total)
 
-  const botoes = document.createElement("div")
-  botoes.style.display = "flex"
-  botoes.style.gap = "15px"
-  botoes.style.marginTop = "10px"
+  const comanda_botoes = document.createElement("div")
+  comanda_botoes.style.display = "flex"
+  comanda_botoes.style.gap = "15px"
+  comanda_botoes.style.marginTop = "10px"
 
-  const cancelar = document.createElement("button")
-  cancelar.textContent = "Cancelar"
-  cancelar.onclick = cancelarComanda
-  botoes.appendChild(cancelar)
+  const comanda_botao_cancelar = document.createElement("button")
+  comanda_botao_cancelar.textContent = "Cancelar"
+  comanda_botao_cancelar.onclick = cancelarComanda
+  comanda_botoes.appendChild(comanda_botao_cancelar)
 
-  const finalizar = document.createElement("button")
-  finalizar.textContent = "Finalizar"
-  finalizar.onclick = finalizarComanda
-  botoes.appendChild(finalizar)
+  const comanda_botao_finalizar = document.createElement("button")
+  comanda_botao_finalizar.textContent = "Finalizar"
+  comanda_botao_finalizar.onclick = finalizarComanda
+  comanda_botoes.appendChild(comanda_botao_finalizar)
 
-  rodape.appendChild(botoes)
-  conteudo.appendChild(rodape)
+  comanda_rodape_caixa.appendChild(comanda_botoes)
+  conteudo.appendChild(comanda_rodape_caixa)
 }
 
 const adcComanda = (cod) => {

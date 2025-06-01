@@ -12,19 +12,19 @@
 
     <div id="box_principal">
 
-        <section id="box_cardapio">
+        <section id="cardapio_caixa">
             <h2>Cardápio</h2>
             <header>
                 <ul class="lista_botoes">
-                    <li><button onclick="gerar('todos')">Todos</button></li>
-                    <li><button onclick="gerar('salgados')">Salgados</button></li>
-                    <li><button onclick="gerar('doces')">Doces</button></li>
-                    <li><button onclick="gerar('bebidas')">Bebidas</button></li>
+                    <li data-categoria="todos">Todos</li>
+                    <li data-categoria="salgados">Salgados</li>
+                    <li data-categoria="doces">Doces</li>
+                    <li data-categoria="bebidas">Bebidas</li>
                 </ul>
             </header>
             <div id="conteudo_cardapio"></div>
         </section>
-        
+
         <section id="box_comanda">
             <h2>Comanda</h2>
             <div id="conteudo_comanda"></div>
