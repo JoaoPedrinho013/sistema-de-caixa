@@ -51,15 +51,12 @@ h1, h2 {
 
 .lista_botoes > li {
   margin: 1em;
+  cursor: pointer;
 }
 
 .lista_botoes li.ativo {
   font-weight: 500;
   color: #ff6600;
-}
-
-.lista_botoes li:hover {
-  cursor: pointer;
 }
 
 #conteudo_cardapio {
@@ -95,10 +92,10 @@ h1, h2 {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   margin: 5% 0;
+  cursor: pointer;
 }
 
 .botao_cardapio_add:hover {
-  cursor: pointer;
   background-color: #ff6600;
   color: white;
 }
@@ -118,34 +115,29 @@ h1, h2 {
 
 .comanda_item_caixa {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr auto;
   gap: 10px;
   text-align: center;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  width: auto;
-  height: auto;
   margin: 10px;
   background-color: white;
   border-radius: 5px;
+  align-items: center;
 }
 
-.comanda_item_caixa p:nth-child(1),
-.comanda_item_caixa p:nth-child(2),
-.comanda_item_caixa p:nth-child(3) {
-  grid-row: 1;
+.comanda_item_caixa:first-child {
+  font-weight: 600;
+  background-color: #d6f5d6;
 }
 
-.comanda_item_caixa p:nth-child(4),
-.comanda_item_caixa p:nth-child(5),
-.comanda_item_caixa p:nth-child(6) {
-  grid-row: 2;
+.comanda_item_caixa:first-child p:last-child {
+  width: 4.5em;
+  height: 1em;
 }
 
 .comanda_item_caixa button {
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 6;
   justify-self: center;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
@@ -153,10 +145,10 @@ h1, h2 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 3%;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .comanda_item_caixa button:hover {
-  cursor: pointer;
   color: white;
   background-color: #ff6600;
 }
@@ -167,47 +159,33 @@ h1, h2 {
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   padding: 10px;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comanda_rodape_caixa > p {
   color: rgb(120, 240, 120);
   font-weight: 600;
+  margin: 0;
 }
 
-.comanda_rodape_caixa > div {
-  justify-content: space-around;
-}
-
-.comanda_rodape_caixa > div > .botao_cancelar {
+.comanda_rodape_caixa > button {
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
-  color: red;
+  color: #ff6600;
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 3%;
+  padding: 8px 16px;
   border-radius: 5px;
-}
-
-.comanda_rodape_caixa > div > .botao_cancelar:hover {
   cursor: pointer;
-  color: white;
-  background-color: red;
+  margin-left: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.comanda_rodape_caixa > div > .botao_finalizar {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background-color: white;
-  color: lightgreen;
-  font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 3%;
-  border-radius: 5px;
-}
-
-.comanda_rodape_caixa > div > .botao_finalizar:hover {
-  cursor: pointer;
+.comanda_rodape_caixa > button:hover {
   color: white;
-  background-color: lightgreen;
+  background-color: #ff6600;
 }
 
 .borda {
